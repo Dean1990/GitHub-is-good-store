@@ -54,7 +54,7 @@
 
   效果图
 
-  ![效果图]()
+  ![效果图](https://github.com/Dean1990/GitHub-is-good-store/blob/master/image/stock_view_1.png?raw=true)
 
   感觉太空了，加点鲜艳的颜色，给画板加个底色
 
@@ -64,7 +64,7 @@
 
   真是惊艳[滑稽]
 
-  ![惊艳的效果图]()
+  ![惊艳的效果图](https://github.com/Dean1990/GitHub-is-good-store/blob/master/image/stock_view_2.png?raw=true)
 
   还差点什么，趋势图嘛，就应该动起来，效果才好，怎么动呢，可以有好多方式，可以每隔一段时间调用一次onDraw方法，要用计时器吗？其实有更好的选择，View类有 invalidate() 方法，当被调用时，什么触发onDraw方法，如果把invalidate()放在onDraw方法中，这就成了一个循环。那么，把path路径的绘制放到onDraw中，每次调用就绘制一段，再调用invalidate()方法，循环下去就成了动图，任务完成。
 
@@ -96,5 +96,4 @@
 
   最终效果
 
-  ![最终效果图]()
-
+  ![最终效果图](https://github.com/Dean1990/GitHub-is-good-store/blob/master/image/stock_view_3.gif?raw=true)
