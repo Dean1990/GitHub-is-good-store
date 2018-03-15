@@ -217,11 +217,13 @@ paint.setStyle(Paint.Style.FILL_AND_STROKE);
 
 最终效果
 
-![]()
+![最终效果](https://github.com/Dean1990/GitHub-is-good-store/blob/master/image/k_line_view_1.png?raw=true)
 
 不够惊艳，加个黑色背景色，效果翻倍
 
-![]()
+![惊艳效果](https://github.com/Dean1990/GitHub-is-good-store/blob/master/image/k_line_view_2.png?raw=true)
+
+确实很惊艳，也很惊讶，这股票趋势，能吓死人吧[滑稽]。
 
 附上代码
 
@@ -309,4 +311,12 @@ public class KLineView extends View {
 
 
 
+
+------
+
+2018/3/15.
+
+*Dean.King*
+
+**Beijing**
 
