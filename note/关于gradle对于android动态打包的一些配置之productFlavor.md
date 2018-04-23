@@ -1,4 +1,4 @@
-### 关于gradle对于android动态打包的一些配置
+### 关于gradle对于android动态打包的一些配置之productFlavor
 
 ****
 
@@ -153,6 +153,67 @@
     ```
 
     取值使用getInt()方法，因为资源本来就是数值类型（在 android 中）。
+
+    **Tip:** 动态配置代码中的变量还可以采用 BuildConfig 的方式，及我们使用 buildConfigField 配置时，BuildConfig 就会生成我们配置的字段（自动）
+
+    ```groovy
+    buildConfigField "boolean","isDebug","true"
+    ```
+
+    参数分别是 类型，名称，值，全部都是字符串类型，比如上面声明一个布尔类型的 isDebug，值为 true，或者声明一个数值类型：
+
+    ```groovy
+    buildConfigField "int","count","1"
+    ```
+
+    或者声明一个字符串类型，注意看：
+
+    ```groovy
+    buildConfigField "String","name","\"Dean\""
+    ```
+
+    看到不同的地方了吗？字符串声明的双引号是不能省略的。
+
+    buildConfigField 可以配置于 productFlavors 中也可以配置于 buildTypes 中，
+
+    ```groovy
+    buildTypes {
+        release {
+            buildConfigField "boolean","isDebug","false"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            buildConfigField "boolean","isDebug","true"
+        }
+    }
+    ```
+
+    或者
+
+    ```groovy
+    productFlavors{
+       official{
+           buildConfigField "boolean","isDebug","false"
+       }
+    }
+    ```
+
+    代码中使用
+
+    ```java
+    public static final boolean DEBUG = BuildConfig.isDebug;
+    ```
+
+    其实吧，这字段声明的一点意义都没有[流汗]
+
+    如果点进去看看BuildConfig这个类的话，系统已经自动生成 DEBUG 字段
+
+    ```java
+    public static final boolean DEBUG = Boolean.parseBoolean("true");
+    ```
+
+    默认情况下，debug 包 DEBUG = true ，release 包 DEBUG = false。
 
 #### 一个完整的例子
 
