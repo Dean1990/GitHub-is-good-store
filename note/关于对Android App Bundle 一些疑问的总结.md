@@ -1,5 +1,9 @@
 ### 关于对Android App Bundle 一些疑问的总结
 
+****
+
+> **发布于[Deanlib](http://deanlib.com)  转载请注明出处 http://deanlib.com**
+
 关于 App Bundle 在刚刚出来的时候，看过一点点介绍，所以对它的理解就是分包，所以这几天要用到，学习时就有很多疑问，也走了弯路。
 
 #### 动态交付与主apk怎么联系的
@@ -112,10 +116,11 @@ java -jar bundletool-all-0.9.0.jar install-apks --apks=app.apks
 ```
 
 
+**附 split 的过程**
 
-split 的过程
+![split](https://github.com/Dean1990/GitHub-is-good-store/blob/master/image/android_app_bundle_split.gif?raw=true)
 
-![split](https://img-blog.csdn.net/20181018223835228?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x0eW0yMDE0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
 
 参考内容：
 
@@ -125,5 +130,14 @@ split 的过程
 
 [bundletool](<https://developer.android.com/studio/command-line/bundletool>)
 
+
+
+------
+
+2019/4/12.
+
+*Dean.King*
+
+**Beijing**
 
 
