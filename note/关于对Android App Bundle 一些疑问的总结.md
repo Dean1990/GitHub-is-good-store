@@ -61,7 +61,7 @@ dependencies {
 }
 ```
 
-怎么用点这里 [Play Core Library](<https://developer.android.com/guide/app-bundle/playcore>)
+怎么用点这里 [Play Core Library](https://developer.android.com/guide/app-bundle/playcore)
 
 这是需要开发者写代码，这才体现出动态
 
