@@ -44,7 +44,15 @@
 
 #### 对应用做过什么性能优化
 
+#### Android 内存优化相关操作以及检测工具
+
 #### 说说ANR，OOM和内存泄露
+
+- **OOM** 当java进程申请的java空间超过阈值时，就会抛出OOM异常（这个阈值由Android系统dalvik vm heapsize硬性限制，视机型而定），可以通过 `adb shell getprop|grep dalvik.vm.heapsize` 查看
+- **绕过dalvik vm heapsize 的限制**
+- - **创建子进程** 使用 android:process 标签（会引出一个更棘手的问题，进程间通信）
+  - **使用 jni 在 native heap 上申请空间（推荐）** nativeheap 不受 dalvik vm heapsize 的限制，当 native 层申请过多的内存导致 RAM 耗尽时，memory killer 可能会杀掉进程（原则上是先杀掉优先级比较低的进程），造成闪退
+  - **使用显存** 比如 OpenGL textures , GraphicBufferAllocator 等 API申请的内存就是显存
 
 #### 对弱网或无网的优化
 
@@ -102,11 +110,24 @@
 
 #### Android DataBinding
 
-#### Android 内存优化相关操作以及检测工具
+#### Android LifeCycle
 
-#### AndroidLifeCycle
+#### Android LifeData
+
+#### 列举 Android 6.0 ,7.0 , 8.0 , 9.0 新增的权限
+
+#### AOP
+
+#### 注解技术
+
+#### WebView的封装
+
+#### 当一个页面上面是WebView ，下面是ListView等可滑动的视图时，怎样处理
+
+
 
 - 做自我介绍，说说都做过什么项目
+
 - 工作几年，Android 经验几年，期望薪资，
 
 - 是否有可以展示的项目
@@ -114,6 +135,16 @@
 - 在这个项目中负责哪部分，几个人，用时
 
 - 说说研发的组织架构，人员构成
+
 - 离职原因，上家公司工资，税前，税后
+
 - 5G 对 Android 是否会有影响
+
+- 你想了解我们公司什么
+
+- 当我们使用第三方开源框架时，如果发现未知问题，当不确定是否是框架的问题时，怎么办
+
+  主要考察的点是“开源”，最快的方式是去搜索开源项目的问题列表（Issues），次之，查看源码；
+
+  当确定是框架问题时，最好的解决办法是，检查版本，作者可能会在最新的版本已经解决该问题，其次，Fork 修改源码，最后考虑换框架（代价最大）
 
