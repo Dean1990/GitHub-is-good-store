@@ -249,9 +249,21 @@ public class Abcd {
 
 #### 都用过什么同步方式
 
+#### manifest 中的 tastAffinity 属性是做什么的
 
+1.affinity是Activity内的一个属性（在ManiFest中对应属性为taskAffinity）。默认情况下，拥有相同affinity的Activity属于同一个Task中。
 
+2.Task也有affinity属性，它的affinity属性由根Activity（创建Task时第一个被压入栈的Activity）决定。
 
+3.在默认情况下（我们什么都不设置），所有的Activity的affinity都从Application继承。也就是说Application同样有taskAffinity属性。
+
+```
+<application
+	android:taskAffinity="gf.zy"
+```
+4.Application默认的affinity属性为Manifest的包名。
+
+#### 冷启动和热启动
 
 
 
