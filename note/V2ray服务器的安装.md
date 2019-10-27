@@ -26,6 +26,37 @@
 
 ![](https://github.com/Dean1990/GitHub-is-good-store/blob/master/image/v2ray_install/v2ray(5).png?raw=true)
 
+附上 python 脚本，用于批量测试IP地址可用性，（复制 Products 页面内容保存在同级目录 `ips.txt` 中）。
+
+```python
+import re
+import os
+
+#读取文本内容
+f = open('ips.txt','r')
+content = f.read()
+
+#正则提取IP地址
+pattern = re.compile(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}')
+result = pattern.findall(content)
+print('Extract IPs:')
+print(result)
+
+#遍历 ping
+enableIps = list()
+for ip in result:
+    backinfo = os.system('ping -c 1 -w 1 %s'%ip)
+    #backinfo 会返回 0 或 1
+    #返回0 表示有应答
+    #返回1 表示无应答
+    #print(backinfo)
+    if not backinfo:
+        enableIps.append(ip)
+        
+print('Reply Received:')
+print(enableIps)
+```
+
 通过右侧的菜单，删除实例，最后得到一个可用并速度稳定并且比较快的服务器实例。
 
 ![](https://github.com/Dean1990/GitHub-is-good-store/blob/master/image/v2ray_install/v2ray(6).png?raw=true)
