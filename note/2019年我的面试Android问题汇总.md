@@ -363,6 +363,8 @@ A onPause()	->	B onCreate()	->	B onStart()	->	B onResume()	->	A onStop()
 
 #### ThreadLocal
 
+#### IntentService
+
 #### Handler机制
 
 #### Looper 是个死循环，主线程的 Looper 为什么不会造成堵塞
