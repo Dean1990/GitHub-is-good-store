@@ -18,3 +18,9 @@ conda install pyqt=4
 pip install pillow
 ```
 
+#### python3 安装MySQLdb
+
+```shell
+pip install mysqlclient
+```
+
