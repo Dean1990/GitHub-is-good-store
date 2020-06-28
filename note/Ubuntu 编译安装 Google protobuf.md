@@ -1,5 +1,9 @@
 ### Ubuntu 编译安装 Google protobuf
 
+------
+
+> **发布于[Deanlib](http://deanlib.com)  转载请注明出处 http://deanlib.com**
+
 #### 安装依赖包
 
 ``` shell
@@ -52,11 +56,13 @@ $ python
 >>> import google.protobuf
 ```
 
+> 注意：有些命令会报没有权限的错误，使用 `sudo` 时注意 python 的指向，python2 or python3?
 
+---
 
-Dean
+2020/6/27.
 
-2020/6/27
+*Dean.King*
 
-Beijing
+**Beijing**
 
