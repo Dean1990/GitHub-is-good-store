@@ -105,9 +105,36 @@
 
 #### 内存溢出（OOM）溢出的是哪块内存
 
+- 如果是堆内存没有可用的空间存储生成的对象，JVM会抛出java.lang.OutOfMemoryError
+- 如果栈内存没有可用的空间存储方法调用和局部变量，JVM会抛出java.lang.StackOverFlowError
+
 #### 说说 java 堆内存的结构以及工作原理
 
 #### java 堆 与 栈 的区别
+
+**各司其职**
+
+最主要的区别就是栈内存用来存储局部变量和方法调用。
+
+而堆内存用来存储Java中的对象。无论是成员变量，局部变量，还是类变量，它们指向的对象都存储在堆内存中。
+
+**独有还是共享**
+
+栈内存归属于单个线程，每个线程都会有一个栈内存，其存储的变量只能在其所属线程中可见，即栈内存可以理解成线程的私有内存。
+
+而堆内存中的对象对所有线程可见。堆内存中的对象可以被所有线程访问。
+
+**异常错误**
+
+如果栈内存没有可用的空间存储方法调用和局部变量，JVM会抛出java.lang.StackOverFlowError。
+
+而如果是堆内存没有可用的空间存储生成的对象，JVM会抛出java.lang.OutOfMemoryError。
+
+**空间大小**
+
+栈的内存要远远小于堆内存，如果你使用递归的话，那么你的栈很快就会充满。如果递归没有及时跳出，很可能发生StackOverFlowError问题。
+
+你可以通过-Xss选项设置栈内存的大小。-Xms选项可以设置堆的开始时的大小，-Xmx选项可以设置堆的最大值。
 
 #### CPU 爆满的原因
 
@@ -133,6 +160,20 @@
 #### 应用的保活
 
 #### 广播（静态，动态，有序，无序）
+
+从注册方式来说，分为静态注册和动态注册
+
+从发送方式来说，分为有序和无序（普通）广播
+
+普通广播通过Context.sendBroadcast()方法来发送。它是完全异步的。
+所有的receivers接收器的执行顺序不确定。 因此，所有的receivers接收器接收broadcast的顺序不确定。
+这种方式效率更高。但是BroadcastReceiver无法使用setResult系列，getResult系列及abort系列API
+有序广播是通过Context.sendOrderedBroadcast来发送。所有的receiver依次执行。
+BroadcastReceiver可以使用setResult系列函数来结果传给下一个BroadcastReceiver，通过getResult系列函数来取得上个BroadcastReceiver返回的结果，并可以abort系列函数来让系统丢弃该广播让，使用该广播不再传送到别的BroadcastReceiver。
+可以通过在intent-filter中设置android:priority属性来设置receiver的优先级。优先级相同的receiver其执行顺序不确定。
+如果BroadcastReceiver是代码中注册的话，且其intent-filter拥有相同android:priority属性的话，先注册的将先收到广播。
+有序广播，即从优先级别最高的广播接收器开始接收，接收完了如果没有丢弃，就下传给下一个次高优先级别的广播接收器进行处理，依次类推，直到最后。
+这里接收短信的广播是有序广播，因此可以设置你自己的广播接收器的级别高于系统原来的级别，就可以拦截短信，并且不存收件箱，也不会有来信提示音。
 
 #### 分辨率适配
 
@@ -165,7 +206,7 @@
 
 java1.8以后采用链表或红黑树的方式，采用红黑树是为了优化链表过长的问题。
 
-#### 理解间复杂度和空间复杂度
+#### 理解时间复杂度和空间复杂度
 
 #### 线程同步中的操作使用 对象锁还是关键字
 
@@ -188,6 +229,31 @@ java1.8以后采用链表或红黑树的方式，采用红黑树是为了优化�
 #### Android LifeData
 
 #### 列举 Android 6.0 ,7.0 , 8.0 , 9.0 新增的权限，以及更新变更
+
+https://www.jianshu.com/p/a6c727cb4af4
+
+#### 运行时权限申请的代码
+
+```java
+//检查
+1 ContextCompat#checkSelfPermission
+2 Context#checkSelfPermission
+3 PermissionChecker#checkSelfPermission
+//需注意的是若应用targetSdk<23，则第1、2种方式返回的永远是PERMISSION_GRANTED，即永远返回已授权。根据本文上面内容知当targetSdk<23时，应用虽在安装时就获得授权，但若运行在>=Android6.0的手机上时，用户可在安装后取消授权，此时就不能使用第1、2种方式来检查权限，而需使用第3种
+
+//请求
+ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 
+requestCode);
+
+//结果
+@Override
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+}
+
+```
+
+
 
 #### AOP
 
@@ -227,6 +293,8 @@ public class Abcd {
 #### 看过什么源码，Android系统的，第三方框架的
 
 #### Kotlin 中 `var a : String =? null` 中的 `？` 的原理是什么
+
+#### Kotlin 协程
 
 #### App 弱网络，无网络的处理 及网络优化相关
 
