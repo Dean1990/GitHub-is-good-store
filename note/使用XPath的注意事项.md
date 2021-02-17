@@ -1,4 +1,8 @@
-XPath
+###XPath
+
+****
+
+> **发布于[Deanlib](http://deanlib.com)  转载请注明出处 http://deanlib.com**
 
 #### 默认情况下，根节点不做为查找对象
 
@@ -23,8 +27,8 @@ XPath
 
 假如当前查找到的节点是 `h2` ，命称为 aa 
 
-- `aa.xpath("//span") ` 查找的是整个文档中所有的 `span` ，以上文档为例，便会找出4个 `span`
-- `aa.xpath(".//span")` 查找的是当前 aa 下所有的`span` ，以上文档为例，会找到2个 `span`
+- `aa.xpath("//span") ` 查找的是**整个文档**中所有的 `span` ，以上文档为例，便会找出4个 `span`
+- `aa.xpath(".//span")` 查找的是**当前 aa** 下所有的`span` ，以上文档为例，会找到2个 `span`
 
 #### 查找时列表下标是从1开始的，并非0
 
@@ -33,3 +37,12 @@ XPath
 ```
 
 查找第一个 `span` 标签，写成 "span[1]"
+
+
+----
+
+2020/12/13.
+
+*Dean.King*
+
+**Beijing**

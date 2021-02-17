@@ -32,7 +32,7 @@ flutter config --enable-web
 
 然后，去打开 VSCode的 ，满心期待的去创建项目
 
-快捷键 `command + shift + p` 调出输入框，输入 “Flutter” ，选项中还是没有 “Flutter: New Web Project”，由于，我又“礼貌”的创建了一个 “Flutter: New Project” 项目
+快捷键 `command + shift + p` 调出输入框，输入 “Flutter” ，选项中还是没有 “Flutter: New Web Project”，于是，我又“礼貌”的创建了一个 “Flutter: New Project” 项目
 
 噢！居然有 `web` 目录！
 
